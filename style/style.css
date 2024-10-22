@@ -1,0 +1,49 @@
+body {
+    text-align: center;
+}
+
+.main {
+    width: 90%;
+}
+
+.itemImage {
+    margin-top: 10px;
+    width: 40%;
+}
+
+.itemShow a {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    color:black;
+  }
+  
+
+.itemShow {
+    display:inline-block;
+    width: 20%;
+    min-height: 100px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.roomInfo h1{
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  footer {
+    width:100%;
+    text-align: center;
+  }
+
+  footer a {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    color:black;
+  }

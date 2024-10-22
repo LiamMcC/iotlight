@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Scrolling with Sticky Nav</title>
+  <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Sticky Navbar */
+#navbar {
+  position: relative;  /* Starts below the top */
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 0;
+  top: 10px;  /* Set to where you want the nav bar to start */
+  z-index: 1000;
+}
+
+#navbar.sticky {
+  position: fixed; /* Sticky when scrolled past */
+  top: 0;
+  width: 100%;
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Parallax Sections */
+.parallax {
+  height: 100vh;
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.parallax .content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+#section1 {
+  background-image: url('sittingroom.jpg'); /* Replace with your first image */
+}
+
+#section2 {
+  background-image: url('bathroom.jpg'); /* Replace with your second image */
+}
+
+#section3 {
+  background-image: url('kitchen.jpg'); /* Replace with your third image */
+}
+
+/* Smooth scrolling effect */
+html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header id="navbar">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Parallax Sections -->
+  <section class="parallax" id="section1">
+    <div class="content">
+      <h1>Section 1</h1>
+      <p> 
+        <% result.forEach(function(item) { %> 
+            
+               <img src="../<%= item.image %>" alt="<%= item.image %>" class="itemImage"/>
+               <br>
+                        
+               <% if (  item.image == 1) { %>
+                Heater Is On
+                          <% } else { %>
+                    Heater Is Off
+              <% } %>
+    
+    
+               
+           
+            <% }); %>
+
+      </p>
+    </div>
+  </section>
+
+  <section class="parallax" id="section2">
+    <div class="content">
+      <h1>Section 2</h1>
+      <p>Scroll to the next section...</p>
+    </div>
+  </section>
+
+  <section class="parallax" id="section3">
+    <div class="content">
+      <h1>Section 3</h1>
+      <p>This is the last section...</p>
+    </div>
+  </section>
+<script>
+    // Sticky Navbar Script
+window.onscroll = function() {stickyNavbar()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function stickyNavbar() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+// Change background image as content scrolls
+window.addEventListener('scroll', function() {
+  var sections = document.querySelectorAll('.parallax');
+  var scrollPos = window.scrollY + window.innerHeight / 2;
+
+  sections.forEach(function(section, index) {
+    var sectionTop = section.offsetTop;
+    var sectionHeight = section.clientHeight;
+    var nextSectionTop = sectionTop + sectionHeight;
+
+    if (scrollPos > sectionTop && scrollPos <= nextSectionTop) {
+      document.body.style.backgroundImage = getComputedStyle(section).backgroundImage;
+    }
+  });
+});
+
+</script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
